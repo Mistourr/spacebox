@@ -29,6 +29,10 @@ partial class SandboxGame : Game
 
 		cl.Components.Add( new SleepingPawn() ); //SleepingPawn will be used to remember which pawn is used outside of the editor
 		cl.Components.Get<SleepingPawn>().SetPawn( player ); //It will be the SandboxPlayer, ofc.
+		var hudComponent = new HudComponent();
+		hudComponent.SetHud(new SpaceboxHud());
+		cl.Components.Add(hudComponent);
+		
 	}
 	protected override void OnDestroy()
 	{

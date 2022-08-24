@@ -16,6 +16,9 @@ partial class SandboxGame : Game
 			if ( cl.Pawn is not EditorPawn )
 			{
 				cl.Pawn = new EditorPawn();
+				var oldHud = cl.Components.Get<HudComponent>().GetHud();
+				cl.Components.Get<HudComponent>( true ).SetHud(new EditorHud());
+				oldHud.Delete();
 			}
 		}
 		else if ( arg.ToLower() == "close" )
@@ -25,6 +28,9 @@ partial class SandboxGame : Game
 				var ply = cl.Pawn;
 				cl.Pawn = cl.Components.Get<SleepingPawn>( true ).GetPawn(); // We get the original pawn back through the client's custom component
 				ply.Delete(); // Delete the editor pawn to avoid duplication
+				var oldHud = cl.Components.Get<HudComponent>().GetHud();
+				cl.Components.Get<HudComponent>( true ).SetHud( new SpaceboxHud() );
+				oldHud.Delete();
 			}
 		}
 		else if(arg.ToLower() == "help"){

@@ -13,8 +13,6 @@ partial class SandboxPlayer : Player
 	/// </summary>
 	public ClothingContainer Clothing = new();
 
-	public SpaceboxHud hud;
-
 	/// <summary>
 	/// Default init
 	/// </summary>
@@ -62,8 +60,6 @@ partial class SandboxPlayer : Player
 		base.Respawn();
 
 		Position += Vector3.Up * 45f;
-		if (IsClient)
-			hud = new SpaceboxHud();
 	}
 
 	public override void OnKilled()

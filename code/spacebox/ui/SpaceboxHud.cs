@@ -4,26 +4,12 @@ using Sandbox.UI;
 [Library]
 public partial class SpaceboxHud : HudEntity<RootPanel>
 {
-	StyleSheet sandboxStyle = StyleSheet.FromFile( "ui/SandboxHud.scss" );
 	public SpaceboxHud()
 	{
 		if ( !IsClient )
 			return;
 
 		//RootPanel.StyleSheet.Add(sandboxStyle);
-		SwitchToSandboxHud();
-	}
-	public void ClearHud()
-	{
-		RootPanel.DeleteChildren();
-	}
-	public void BuildEditorHud()
-	{
-		ClearHud();
-	}
-	public void BuildSandboxHud()
-	{
-		ClearHud();
 		RootPanel.StyleSheet.Load( "spacebox/ui/SpaceboxHud.scss" );
 
 		RootPanel.AddChild<ChatBox>();
@@ -36,15 +22,5 @@ public partial class SpaceboxHud : HudEntity<RootPanel>
 		RootPanel.AddChild<CurrentTool>();
 		RootPanel.AddChild<SpawnMenu>();
 		RootPanel.AddChild<Crosshair>();
-	}
-	[ClientRpc]
-	public void SwitchToSandboxHud()
-	{
-		BuildSandboxHud();
-	}
-	[ClientRpc]
-	public void SwitchToEditorHud()
-	{
-		BuildEditorHud();
 	}
 }
