@@ -3,6 +3,7 @@ using System;
 
 [Spawnable]
 [Library( "ent_car", Title = "Car" )]
+
 public partial class CarEntity : Prop, IUse
 {
 	[ConVar.Replicated( "debug_car" )]

@@ -36,6 +36,7 @@ public partial class DroneEntity : Prop
 
 		SetModel( "entities/drone/drone.vmdl" );
 		SetupPhysicsFromModel( PhysicsMotionType.Dynamic, false );
+		Log.Info( "Dronep pos : " + Position.ToString() );
 	}
 
 	[Event.Physics.PostStep]

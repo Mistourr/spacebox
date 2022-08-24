@@ -1,15 +1,20 @@
 ﻿using Sandbox;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections;
+using Spacebox;
+using System.Collections.Generic;
 
 partial class SandboxGame : Game
 {
+	public SpaceboxHud hud;
 	public SandboxGame()
 	{
 		if ( IsServer )
 		{
 			// Create the HUD
-			_ = new SandboxHud();
+			//hud = new SpaceboxHud();
+			Map.Physics.Gravity = new Vector3( 0, 0, 0 ); // We don't want gravity on the whole map
 		}
 	}
 
@@ -17,11 +22,14 @@ partial class SandboxGame : Game
 	{
 		base.ClientJoined( cl );
 		var player = new SandboxPlayer( cl );
+		
 		player.Respawn();
 
 		cl.Pawn = player;
-	}
 
+		cl.Components.Add( new SleepingPawn() ); //SleepingPawn will be used to remember which pawn is used outside of the editor
+		cl.Components.Get<SleepingPawn>().SetPawn( player ); //It will be the SandboxPlayer, ofc.
+	}
 	protected override void OnDestroy()
 	{
 		base.OnDestroy();
@@ -31,7 +39,6 @@ partial class SandboxGame : Game
 	public static async Task Spawn( string modelname )
 	{
 		var owner = ConsoleSystem.Caller?.Pawn;
-
 		if ( ConsoleSystem.Caller == null )
 			return;
 
@@ -155,5 +162,4 @@ partial class SandboxGame : Game
 	{
 		KillFeed.Current?.AddEntry( leftid, left, rightid, right, method );
 	}
-
 }

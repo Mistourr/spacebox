@@ -1,4 +1,5 @@
 ﻿using Sandbox;
+using Spacebox;
 
 partial class SandboxPlayer : Player
 {
@@ -11,6 +12,8 @@ partial class SandboxPlayer : Player
 	/// The clothing container is what dresses the citizen
 	/// </summary>
 	public ClothingContainer Clothing = new();
+
+	public SpaceboxHud hud;
 
 	/// <summary>
 	/// Default init
@@ -57,6 +60,10 @@ partial class SandboxPlayer : Player
 		CameraMode = new FirstPersonCamera();
 
 		base.Respawn();
+
+		Position += Vector3.Up * 45f;
+		if (IsClient)
+			hud = new SpaceboxHud();
 	}
 
 	public override void OnKilled()

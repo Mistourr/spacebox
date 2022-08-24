@@ -1,6 +1,6 @@
 ﻿using Sandbox;
 using System.Collections.Generic;
-
+using Spacebox;
 public partial class Weapon : BaseWeapon, IUse
 {
 	public virtual float ReloadTime => 3.0f;
