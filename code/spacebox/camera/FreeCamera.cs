@@ -23,18 +23,21 @@ namespace Spacebox
 
 		public override void BuildInput( InputBuilder input )
 		{
-			MoveInput = input.AnalogMove;
-			LookAngles += input.AnalogLook.WithRoll( 0 );
+			if ( Input.Down( InputButton.SecondaryAttack ) )
+			{
+				MoveInput = input.AnalogMove;
+				LookAngles += input.AnalogLook.WithRoll( 0 );
 
-			MoveSpeed = 1.0f;
-			if ( input.Down( InputButton.Run ) ) MoveSpeed = 5.0f;
-			if ( input.Down( InputButton.Duck ) ) MoveSpeed = 0.2f;
+				MoveSpeed = 1.0f;
+				if ( input.Down( InputButton.Run ) ) MoveSpeed = 5.0f;
+				if ( input.Down( InputButton.Duck ) ) MoveSpeed = 0.2f;
 
-			input.ViewAngles = LookAngles;
-			input.Position = Position;
+				input.ViewAngles = LookAngles;
+				input.Position = Position;
 
-			// input.ClearButtons();
-			input.StopProcessing = true;
+				// input.ClearButtons();
+				input.StopProcessing = true;
+			}
 		}
 
 		public void Focus( Entity ent )

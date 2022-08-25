@@ -11,7 +11,7 @@ public partial class EditorHud : HudEntity<RootPanel>
 
 		//RootPanel.StyleSheet.Add(sandboxStyle);
 		RootPanel.StyleSheet.Load( "spacebox/ui/EditorHud.scss" );
-
 		RootPanel.AddChild<Quickbar>();
+		RootPanel.AddChild<EditorMenu>();
 	}
 }
