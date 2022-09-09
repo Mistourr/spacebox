@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Collections;
 using Spacebox;
 using System.Collections.Generic;
+using System;
 
 partial class SandboxGame : Game
 {
@@ -15,6 +16,7 @@ partial class SandboxGame : Game
 			// Create the HUD
 			//hud = new SpaceboxHud();
 			Map.Physics.Gravity = new Vector3( 0, 0, 0 ); // We don't want gravity on the whole map
+			DefsLoader.LoadAllDefs();
 		}
 	}
 
@@ -32,7 +34,6 @@ partial class SandboxGame : Game
 		var hudComponent = new HudComponent();
 		hudComponent.SetHud(new SpaceboxHud());
 		cl.Components.Add(hudComponent);
-		
 	}
 	protected override void OnDestroy()
 	{

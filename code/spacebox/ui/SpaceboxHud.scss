@@ -56,6 +56,43 @@ CurrentTool
 	}
 }
 
+CurrentSpaceboxTool {
+	position: absolute;
+	background-color: rgba( #3472e6, 0.8 );
+	backdrop-filter: blur( 50px );
+	border-radius: 10px;
+	top: 100px;
+	left: 100px;
+	padding: 20px 50px;
+	flex-direction: column;
+	opacity: 0.0;
+
+
+	&.active {
+		opacity: 1.0;
+	}
+
+	.title {
+		font-size: 40px;
+		color: white;
+		font-family: Poppins;
+		font-weight: 800;
+		mix-blend-mode: lighten;
+		text-transform: uppercase;
+	}
+
+	.description {
+		font-size: 14px;
+		font-weight: normal;
+		color: white;
+		opacity: 0.8;
+		font-family: Poppins;
+		font-weight: 500;
+		mix-blend-mode: lighten;
+		text-transform: uppercase;
+	}
+}
+
 .spawnmenuopen CurrentTool
 {
 	opacity: 0.01;
@@ -148,5 +185,21 @@ InventoryIcon
 			transition: all 0.1s ease-out;
 			font-size: 13px;
 		}
+	}
+}
+
+ShipCoreInfo {
+	position: absolute;
+	background-color: rgba( #3472e6, 0.8 );
+	backdrop-filter: blur( 50px );
+	border-radius: 10px;
+	top: 48%;
+	left: 55%;
+	padding: 20px 50px;
+	flex-direction: column;
+	opacity: 0.0;
+
+	&.active {
+		opacity: 1.0;
 	}
 }

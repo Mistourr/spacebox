@@ -19,21 +19,25 @@ partial class SandboxGame : Game
 		}
 		else
 		{
-			if ( cl.Pawn is not EditorPawn )
+			if ( cl.Pawn is not EditorPawn ) // If player is not in EditorMode, get him in EditorMode.
 			{
 				cl.Pawn = new EditorPawn();
 				var oldHud = cl.Components.Get<HudComponent>().GetHud();
 				cl.Components.Get<HudComponent>( true ).SetHud( new EditorHud() );
 				oldHud.Delete();
+				var ply = cl.Components.Get<SleepingPawn>().GetPawn();
+				//(ply.Inventory.GetSlot( ply.Inventory.GetActiveSlot() ) as Carriable).ViewModelEntity.EnableHideInFirstPerson = true;
 			}
 			else if ( cl.Pawn is EditorPawn )
 			{
 				var ply = cl.Pawn;
-				cl.Pawn = cl.Components.Get<SleepingPawn>( true ).GetPawn(); // We get the original pawn back through the client's custom component
+				var oldply = cl.Components.Get<SleepingPawn>().GetPawn(); // We get the original pawn back through the client's custom component
+				cl.Pawn = oldply; 
 				ply.Delete(); // Delete the editor pawn to avoid duplication
 				var oldHud = cl.Components.Get<HudComponent>().GetHud();
 				cl.Components.Get<HudComponent>( true ).SetHud( new SpaceboxHud() );
 				oldHud.Delete();
+				//(oldply.Inventory.GetSlot( oldply.Inventory.GetActiveSlot() ) as Carriable).ViewModelEntity.EnableHideInFirstPerson = false;
 			}
 		}
 	}

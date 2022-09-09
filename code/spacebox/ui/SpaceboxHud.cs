@@ -1,5 +1,6 @@
 ﻿using Sandbox;
 using Sandbox.UI;
+using Spacebox;
 
 [Library]
 public partial class SpaceboxHud : HudEntity<RootPanel>
@@ -22,5 +23,7 @@ public partial class SpaceboxHud : HudEntity<RootPanel>
 		RootPanel.AddChild<CurrentTool>();
 		RootPanel.AddChild<SpawnMenu>();
 		RootPanel.AddChild<Crosshair>();
+		RootPanel.AddChild<CurrentSpaceboxTool>();
+		RootPanel.AddChild<ShipCoreInfo>();
 	}
 }

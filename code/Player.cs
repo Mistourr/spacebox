@@ -54,6 +54,7 @@ partial class SandboxPlayer : Player
 		Inventory.Add( new Pistol() );
 		Inventory.Add( new Flashlight() );
 		Inventory.Add( new Fists() );
+		Inventory.Add( new SpaceboxTool() );
 
 		CameraMode = new FirstPersonCamera();
 

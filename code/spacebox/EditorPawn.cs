@@ -9,9 +9,12 @@ namespace Spacebox
 {
 	public partial class EditorPawn : Player
 	{
+		EditorOrigin editorOrigin;
 		public EditorPawn()
 		{
 			CameraMode = new FreeCamera();
+			editorOrigin = new EditorOrigin();
+			//(CameraMode as EditorLookAtCamera).TargetEntity = editorOrigin;
 		}
 
 		public override void Simulate( Client cl )
@@ -33,6 +36,12 @@ namespace Spacebox
 			Position = Input.Position;
 			Rotation = Input.Rotation;
 			EyeRotation = Input.Rotation;
+		}
+
+		protected override void OnDestroy()
+		{
+			base.OnDestroy();
+			editorOrigin.Delete();
 		}
 	}
 }
