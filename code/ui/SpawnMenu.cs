@@ -33,7 +33,7 @@ public partial class SpawnMenu : Panel
 				var models = body.AddChild<CloudModelList>();
 				tabs.AddButtonActive( "s&works", ( b ) => models.SetClass( "active", b ) );
 
-				var sbpanel = body.AddChild<EntityList>();
+				var sbpanel = body.AddChild<SpaceboxPage>();
 				tabs.AddButtonActive( "Space&Box", ( b ) => sbpanel.SetClass( "active", b ) );
 			}
 		}

@@ -17,7 +17,7 @@ namespace Sandbox.Tools
 
 			if ( RelativeToNormal )
 			{
-				Rotation = Rotation.LookAt( tr.Normal, tr.Direction ) * RotationOffset;
+				Rotation = Rotation.LookAt( tr.Normal, Vector3.Up ) * RotationOffset;
 				Position = tr.EndPosition + Rotation * PositionOffset;
 			}
 			else
